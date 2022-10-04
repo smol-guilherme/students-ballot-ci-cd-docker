@@ -15,8 +15,6 @@ services:
       - .env
     networks:
       - student-network
-    volumes:
-      - postgres:/var/lib/postgresql/data/
 
   app:
     image: node:16
@@ -27,11 +25,6 @@ services:
     depends_on:
       - db
     env_file:
-      - .env.test
+      - .env
     networks:
       - student-network
-    volumes:
-      - .:/usr/src/
-
-volumes:
-  postgres:
