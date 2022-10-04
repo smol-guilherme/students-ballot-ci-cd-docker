@@ -1,4 +1,4 @@
-name: Pull Request on Git
+name: PullRequestonGit
 
 on: [pull_request]
 
