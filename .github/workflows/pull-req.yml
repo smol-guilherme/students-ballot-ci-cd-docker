@@ -1,6 +1,5 @@
-name: PullRequestonGit
-
-on: [pull_request]
+name: PullRequest
+  on: [pull_request]
 
 jobs:
   PullRequest:
