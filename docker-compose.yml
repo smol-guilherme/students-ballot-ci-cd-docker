@@ -1,0 +1,38 @@
+version: '3.0'
+
+networks:
+  student-network:
+    driver: bridge
+
+services:
+  db:
+    image: postgres:14
+    container_name: ballot-db
+    restart: always
+    ports:
+      - 2345:5432
+    env_file:
+      - .env
+    networks:
+      - student-network
+    volumes:
+      - postgres:/var/lib/postgresql/data/
+
+  app:
+    image: node:16
+    container_name: ballot-api
+    build: .
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - student-network
+    volumes:
+      - .:/usr/src/
+
+
+volumes:
+  postgres:
